@@ -1,0 +1,48 @@
+.button {
+  background-color: var(--bg-color-dark);
+  letter-spacing: 1px;
+  color: var(--color-yellow);
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 45px;
+  margin: 0 0 2em;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  transition: all 280ms ease-in-out;
+}
+
+.button:hover,
+.button:active {
+  text-decoration: none;
+  letter-spacing: 5px;
+}
+
+.button:after,
+.button:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  bottom: 0px;
+  content: "";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.button:hover:after,
+.button:hover:before {
+  backface-visibility: hidden;
+  border-color: var(--color-yellow);
+  transition: width 350ms ease-in-out;
+  width: 100%;
+}
+
+.button:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 100%;
+}

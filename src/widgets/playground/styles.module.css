@@ -1,0 +1,12 @@
+.playground {
+  width: 100%;
+  height: calc(94% - 35px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.solution {
+  width: 49.5%;
+  height: 100%;
+  margin-top: 35px;
+}

@@ -1,0 +1,8 @@
+.topic {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 94%;
+  padding-top: 20px;
+}

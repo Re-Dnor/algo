@@ -1,0 +1,30 @@
+.header {
+  background-color: var(--bg-color-semi-dark);
+  min-height: 45px;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  cursor: pointer;
+  transition: linear 0.3s;
+}
+
+.title:hover {
+  text-shadow: 0 0 5px white;
+}
+
+.title:hover .js {
+  text-shadow: 0 0 5px var(--color-yellow);
+}
+
+.js {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  color: var(--color-yellow);
+  transition: linear 0.3s;
+}

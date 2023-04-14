@@ -1,0 +1,14 @@
+:root {
+  --color-green: rgb(44 187 93);
+  --color-yellow: rgb(255 192 30);
+  --color-red: rgb(255 55 95);
+
+  --bg-color-dark: rgb(30, 30, 30);
+  --bg-color-semi-dark: rgb(40, 40, 40);
+  --bg-color-sweet-dark: rgb(50, 50, 50);
+
+  --font-size-m: 20px;
+  --font-size-l: 25px;
+  --font-size-xl: 30px;
+  --font-size-xxl: 35px;
+}
