@@ -12,5 +12,19 @@
 
 .img {
   width: 430px;
-  height: 450px;
+  height: 460px;
+}
+
+@media (max-height: 800px) {
+  .img {
+    width: 330px;
+    height: 360px;
+  }
+}
+
+@media (max-height: 650px) {
+  .img {
+    width: 230px;
+    height: 260px;
+  }
 }
