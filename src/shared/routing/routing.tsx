@@ -1,7 +1,6 @@
 import { lazy } from "react";
 
 const HomePage = lazy(() => import("../../pages/home-page/home-page"));
-const NavigationPage = lazy(() => import("../../pages/navigation-page/navigation-page"));
 const InterviewPage = lazy(() => import("../../pages/interview-page/interview-page"));
 const LeetcocePage = lazy(() => import("../../pages/leetcode-page/leetcode-page"));
 const SearchPage = lazy(() => import("../../pages/search-page/search-page"));
@@ -15,11 +14,6 @@ export const RoutingPaths = [
     path: "/",
     element: <HomePage />,
     id: "home",
-  },
-  {
-    path: "/navigation",
-    element: <NavigationPage />,
-    id: "navigation",
   },
   {
     path: "/search",

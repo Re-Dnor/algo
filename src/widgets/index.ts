@@ -1,5 +1,4 @@
 export * from "./header/header";
-export * from "./navigation/navigation";
 export * from "./topic-list/topic-list";
 export * from "./playground/playground";
 export * from "./intro/intro";
