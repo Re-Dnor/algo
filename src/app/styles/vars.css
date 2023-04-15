@@ -7,6 +7,9 @@
   --bg-color-semi-dark: rgb(40, 40, 40);
   --bg-color-sweet-dark: rgb(50, 50, 50);
 
+  --height-header: 6%;
+  --height-main: calc(94% - 1px);
+
   --font-size-m: 20px;
   --font-size-l: 25px;
   --font-size-xl: 30px;

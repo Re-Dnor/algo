@@ -3,6 +3,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 94%;
+  height: var(--height-main);
   padding-top: 20px;
 }
