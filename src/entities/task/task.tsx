@@ -7,7 +7,7 @@ export type TaskPropsType = {
   title: string;
   description?: string;
   task: string;
-  examples: Record<string, string[]>;
+  examples?: Record<string, string[]>;
   solution: string;
 };
 

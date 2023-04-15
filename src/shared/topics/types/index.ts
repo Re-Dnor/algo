@@ -4,7 +4,7 @@ export type Topic = {
   name: string;
   description?: string;
   task: string;
-  examples: ExamplesType;
+  examples?: ExamplesType;
   defaultSolution: string;
   answer: string;
 };
