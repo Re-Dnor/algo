@@ -73,7 +73,9 @@
   height: var(--height-main);
   position: absolute;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.2);
   width: 200px;
+  z-index: 2;
 }
 
 @media (max-height: 680px) {
