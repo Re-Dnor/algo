@@ -19,11 +19,8 @@ export const SendSolution = ({ textSolution }: SendSolutionPropsType) => {
       const token = await data.json();
       const response = await fetchData(token.token);
       const result = await response.json();
-      console.log(result);
       setInput(atob(result.stdout));
     } catch (e) {
-      // setInput(atob(result.stdout));
-      console.log(e);
       setInput("Ошибочка вышла");
     }
 
