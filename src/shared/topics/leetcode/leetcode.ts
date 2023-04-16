@@ -30,6 +30,25 @@ console.log(twoSum([5, 10, 25, 15, 1, 4, 3, 2], 8))`,
   },
 
   "/leetcode/1": {
+    name: "Palindrome number",
+    description: "",
+    task: "Учитывая целое число x, вернуть true, если x является палиндромом, и false в противном случае.",
+    examples: {
+      "Пример 1:": ["Входные данные: const num = 123", "Вывод: false"],
+      "Пример 2:": ["Входные данные: const num = 777", "Вывод: true"],
+      "Пример 3:": ["Входные данные: const num = 5", "Вывод: true"],
+    },
+    defaultSolution: `const palindromeNumber = (num) => {
+
+}
+
+console.log(palindromeNumber(123))`,
+    answer: `const palindromeNumber = (num) => {
+  return Number(num.toString().split("").reverse().join("")) === num;
+};`,
+  },
+
+  "/leetcode/2": {
     name: "Roman to integer",
     description: "",
     task: "Дана римская цифра, преобразовать ее в целое число",
@@ -65,7 +84,7 @@ console.log(romanToInt('LVIII'))`,
   return sum;
 };`,
   },
-  "/leetcode/2": {
+  "/leetcode/3": {
     name: "Longest common prefix",
     description: "",
     task: "Напишите функцию, которая находит самую длинную строку общего префикса среди массива строк. Если общего префикса нет, вернуть пустую строку ''.",
@@ -98,7 +117,8 @@ console.log(longestCommonPrefix(['flower', 'flow', 'flight']))`,
   return res;
 };`,
   },
-  "/leetcode/3": {
+
+  "/leetcode/4": {
     name: "Valid parentheses",
     description: "",
     task: "Учитывая строку s, содержащую только символы '(', ')', '{', '}', '[', ']', определите, допустима ли входная строка. Входная строка действительна, если: Открытые скобки должны быть закрыты однотипными скобками. Открытые скобки должны быть закрыты в правильном порядке. Каждой закрывающей скобке соответствует открытая скобка того же типа.",
@@ -128,6 +148,36 @@ console.log(isValid('{ [ ) ] }'))`,
   }
 
   return res.length === 0;
+};`,
+  },
+
+  "/leetcode/5": {
+    name: "Search insert position",
+    description: "",
+    task: "Учитывая отсортированный массив различных целых чисел и целевое значение, вернуть индекс, если цель найдена. Если нет, верните индекс туда, где он был бы, если бы он был вставлен по порядку. Вы должны написать алгоритм со сложностью выполнения O(log n).",
+    examples: {
+      "Пример 1:": ["Входные данные: const nums = [2, 7, 11, 13, 20, 90], target = 30", "Вывод: 5"],
+      "Пример 2:": ["Входные данные: const nums = [2, 7, 11, 13, 20, 90], target = 2", "Вывод: 0"],
+      "Пример 3:": ["Входные данные: const nums = [], target = 5", "Вывод: 0"],
+    },
+    defaultSolution: `const searchInsert = (nums, target) => {
+
+}
+
+console.log(searchInsert([2, 7, 11, 13, 20, 90], 30 ))`,
+    answer: `const searchInsert = (nums, target) => {
+  let start = 0;
+  let end = nums.length - 1;
+
+  while (start <= end) {
+    const middle = Math.floor((start + end) / 2);
+
+    if (nums[middle] === target) return middle;
+    if (nums[middle] < target) start = middle + 1;
+    if (nums[middle] > target) end = middle - 1;
+  }
+
+  return start;
 };`,
   },
 };

@@ -23,7 +23,7 @@ export const Header = () => {
   return (
     <>
       <div className={styles.header}>
-        <button className={styles.menu} onClick={handleChangeShowMenu}>
+        <button className={`${showMenu ? styles.menuActive : styles.menu}`} onClick={handleChangeShowMenu}>
           <img src={menu} alt='Иконка меню' />
         </button>
         <a className={styles.title} onClick={relocateToHome}>
