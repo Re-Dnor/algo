@@ -93,4 +93,29 @@ showNumber();`,
     answer: `// ReferenceError: Cannot access 'number' before initialization
 // Как можно пофиксить это?`,
   },
+
+  "/interview/4": {
+    name: "Event loop",
+    task: "Что будет выведено в консоль?",
+    description:
+      "Поток выполнения в браузере, равно как и в Node.js, основан на событийном цикле. Понимание работы событийного цикла важно для оптимизаций, иногда для правильной архитектуры.",
+    defaultSolution: `console.log("start");
+
+const promise1 = Promise.resolve().then(() => {
+  console.log("promise1");
+  const timer2 = setTimeout(() => {
+    console.log("timer2");
+  }, 0);
+});
+
+const timer1 = setTimeout(() => {
+  console.log("timer1");
+  const promise2 = Promise.resolve().then(() => {
+    console.log("promise2");
+  });
+}, 0);
+
+console.log("end");`,
+    answer: `start / end / promise1 / timer1 / promise2 / timer2`,
+  },
 };
