@@ -118,4 +118,46 @@ const timer1 = setTimeout(() => {
 console.log("end");`,
     answer: `start / end / promise1 / timer1 / promise2 / timer2`,
   },
+
+  "/interview/5": {
+    name: "Композиция",
+    task: "Реализовать композицию",
+    description:
+      "Композиция - создание сложной функциональности за счет объединения более простых функций. В некотором смысле, композиция - это вложение функций, каждая из которых передает свой результат в качестве входных данных для другой функции. Но вместо того, чтобы создавать неразборчивое количество вложений, мы создадим функцию более высокого порядка - compose(), которая принимает все функции, которые мы хотим объединить, и возвращает нам новую функцию для использования.",
+    examples: {
+      "Пример:": [
+        "Входные данные: const sum = (nums) => nums.reduce((acc, val) => acc + val);",
+        "const getNums = (num) => new Array(num).fill(0).map((_, i) => i + 1);",
+        "const getNumber = compose(sum, getNums);",
+        "console.log(getNumber(5));",
+        "Вывод: 15",
+      ],
+    },
+    defaultSolution: `const sum = (nums) => nums.reduce((acc, val) => acc + val);
+
+const getNums = (number) => {
+  return new Array(number).fill(0).map((_, i) => i + 1);
+};
+
+const compose = (...fns) => {
+  // ...
+};
+
+const getNumber = compose(sum, getNums);
+
+console.log(getNumber(5));`,
+    answer: `const sum = (nums) => nums.reduce((acc, val) => acc + val);
+
+const getNums = (number) => {
+  return new Array(number).fill(0).map((_, i) => i + 1);
+};
+
+const compose = (...fns) => {
+  return (num) => fns.reduceRight((acc, val) => val(acc), num);
+};
+
+const getNumber = compose(sum, getNums);
+
+console.log(getNumber(5));`,
+  },
 };
