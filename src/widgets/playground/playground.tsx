@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { leetcodeTopics, searchTopics, sortingTopics, interviewTopics, treeTopics } from "../../shared/topics";
+import {
+  leetcodeTopics,
+  searchTopics,
+  sortingTopics,
+  interviewTopics,
+  treeTopics,
+  prototypeTopics,
+} from "../../shared/topics";
 import { TopicsType } from "../../shared/topics/types";
 import { SendSolution } from "../../features";
 import { Solution, Task } from "../../entities";
@@ -9,7 +16,14 @@ import styles from "./styles.module.css";
 export const Playground = () => {
   const [textSolution, setTextSolution] = useState("");
   const { pathname } = useLocation();
-  const data: TopicsType = { ...searchTopics, ...sortingTopics, ...treeTopics, ...interviewTopics, ...leetcodeTopics };
+  const data: TopicsType = {
+    ...searchTopics,
+    ...sortingTopics,
+    ...treeTopics,
+    ...interviewTopics,
+    ...leetcodeTopics,
+    ...prototypeTopics,
+  };
   const { answer, description, name, task, examples, defaultSolution } = data[pathname];
 
   return (

@@ -7,6 +7,7 @@ const SearchPage = lazy(() => import("../../pages/search-page/search-page"));
 const SortingPage = lazy(() => import("../../pages/sorting-page/sorting-page"));
 const TaskPage = lazy(() => import("../../pages/task-page/task-page"));
 const TreePage = lazy(() => import("../../pages/tree-page/tree-page"));
+const PrototypePage = lazy(() => import("../../pages/prototype-page/prototype-page"));
 const NotFoundPage = lazy(() => import("../../pages/not-found-page/not-found-page"));
 
 export const RoutingPaths = [
@@ -64,6 +65,16 @@ export const RoutingPaths = [
     path: "/leetcode/:id",
     element: <TaskPage />,
     id: "leetcode-task",
+  },
+  {
+    path: "/prototype",
+    element: <PrototypePage />,
+    id: "prototype",
+  },
+  {
+    path: "/prototype/:id",
+    element: <TaskPage />,
+    id: "prototype-task",
   },
   {
     path: "*",

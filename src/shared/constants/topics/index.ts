@@ -3,3 +3,4 @@ export * from "./sorting/sorting";
 export * from "./tree/tree";
 export * from "./interview/interview";
 export * from "./leetcode/leetcode";
+export * from "./prototype/prototype";

@@ -9,4 +9,5 @@ export const navigationList = [
   { name: "Деревья", link: "/tree" },
   { name: "Интервью", link: "/interview" },
   { name: "Литкод", link: "/leetcode" },
+  { name: "Прототипы", link: "/prototype" },
 ];
