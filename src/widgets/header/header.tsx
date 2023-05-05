@@ -22,14 +22,14 @@ export const Header = () => {
 
   return (
     <>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <button className={`${showMenu ? styles.menuActive : styles.menu}`} onClick={handleChangeShowMenu}>
           <img src={menu} alt='Иконка меню' />
         </button>
         <a className={styles.title} onClick={relocateToHome}>
           <span className={styles.js}>JS</span> Algo from small to large
         </a>
-      </div>
+      </header>
       {showMenu && <Sidebar handler={handleSwitchPage} />}
     </>
   );
