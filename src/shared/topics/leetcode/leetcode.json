@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Two sum",
+    "description": "",
+    "task": "Учитывая массив целых чисел nums и целочисленный taget, вернуть индексы двух чисел так, чтобы они складывались в taget. Вы можете предположить, что каждый вход будет иметь ровно одно решение, и вы не можете использовать один и тот же элемент дважды. Вы можете вернуть ответ в любом порядке, в случае отсутсвия taget вернуть [-1, -1];",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const nums = [2, 7, 11, 15], const target = 9",
+        "Вывод: [0, 1]"
+      ],
+      "Пример 2:": [
+        "Входные данные: const nums = [15, 1, 4, 9, 23, 2, 3, 7], const target = 8",
+        "Вывод: [1, 7]"
+      ]
+    },
+    "defaultSolution": "const twoSum = (nums, target) => {\n\n}\n\nconsole.log(twoSum([5, 10, 25, 15, 1, 4, 3, 2], 8))",
+    "answer": "const twoSum = function (nums, target) {\n  const cache = new Map();\n\n  for (let i = 0; i < nums.length; i++) {\n    const diff = target - nums[i];\n\n    if (cache.has(diff)) {\n      return [cache.get(diff), i];\n    } else {\n      cache.set(nums[i], i);\n    }\n  }\n\n  return [-1, -1];\n};"
+  },
+  {
+    "name": "Palindrome number",
+    "description": "",
+    "task": "Учитывая целое число x, вернуть true, если x является палиндромом, и false в противном случае.",
+    "examples": {
+      "Пример 1:": ["Входные данные: const num = 123", "Вывод: false"],
+      "Пример 2:": ["Входные данные: const num = 777", "Вывод: true"],
+      "Пример 3:": ["Входные данные: const num = 5", "Вывод: true"]
+    },
+    "defaultSolution": "const palindromeNumber = (num) => {\n\n}\n\nconsole.log(palindromeNumber(123))",
+    "answer": "const palindromeNumber = (num) => {\n  return Number(num.toString().split(\"\").reverse().join(\"\")) === num;\n};"
+  },
+  {
+    "name": "Roman to integer",
+    "description": "",
+    "task": "Дана римская цифра, преобразовать ее в целое число",
+    "examples": {
+      "Пример 1:": ["Входные данные: const str = 'V'", "Вывод: 5"],
+      "Пример 2:": ["Входные данные: const str = 'LVIII'", "Вывод: 58"]
+    },
+    "defaultSolution": "const romanToInt = (str) => {\n\n}\n\nconsole.log(romanToInt('LVIII'))",
+    "answer": "const romanToInt = (str) => {\n  const schema = {\n    I: 1,\n    V: 5,\n    X: 10,\n    L: 50,\n    C: 100,\n    D: 500,\n    M: 1000,\n  };\n\n  let sum = 0;\n\n  for (let i = 0; i < str.length; i++) {\n    const current = str[i];\n    const next = str[i + 1];\n\n    schema[current] < schema[next] ? (sum -= schema[current]) : (sum += schema[current]);\n  }\n\n  return sum;\n};"
+  },
+  {
+    "name": "Longest common prefix",
+    "description": "",
+    "task": "Напишите функцию, которая находит самую длинную строку общего префикса среди массива строк. Если общего префикса нет, вернуть пустую строку ''.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = ['flower', 'flow', 'flight']",
+        "Вывод: 'fl'"
+      ],
+      "Пример 2:": [
+        "Входные данные: const array = ['dog', 'racecar', 'car']",
+        "Вывод: ''"
+      ]
+    },
+    "defaultSolution": "const longestCommonPrefix = (array) => {\n\n}\n\nconsole.log(longestCommonPrefix(['flower', 'flow', 'flight']))",
+    "answer": "const longestCommonPrefix = (array) => {\n  if (array.length <= 0) return \"\";\n  if (array.length === 1) return array[0];\n\n  const word = array[0];\n  let res = \"\";\n\n  for (let i = 0; i <= word.length; i++) {\n    const start = word.slice(0, i);\n\n    if (array.every((item) => item.startsWith(start))) {\n      res = start;\n    } else {\n      return res;\n    }\n  }\n\n  return res;\n};"
+  },
+  {
+    "name": "Valid parentheses",
+    "description": "",
+    "task": "Учитывая строку s, содержащую только символы '(', ')', '{', '}', '[', ']', определите, допустима ли входная строка. Входная строка действительна, если: Открытые скобки должны быть закрыты однотипными скобками. Открытые скобки должны быть закрыты в правильном порядке. Каждой закрывающей скобке соответствует открытая скобка того же типа.",
+    "examples": {
+      "Пример 1:": ["Входные данные: const str = '()'", "Вывод: true"],
+      "Пример 2:": ["Входные данные: const str = '{ [ ) ] }'", "Вывод: false"]
+    },
+    "defaultSolution": "const isValid = (str) => {\n\n}\n\nconsole.log(isValid('{ [ ) ] }'))",
+    "answer": "const isValid = (str) => {\n  const pair = {\n    \")\": \"(\",\n    \"]\": \"[\",\n    \"}\": \"{\",\n  };\n  const res = [];\n\n  for (const i of str) {\n    if (!pair[i]) {\n      res.push(i);\n    } else if (res.pop() !== pair[i]) {\n      return false;\n    }\n  }\n\n  return res.length === 0;\n};"
+  },
+  {
+    "name": "Search insert position",
+    "description": "",
+    "task": "Учитывая отсортированный массив различных целых чисел и целевое значение, вернуть индекс, если цель найдена. Если нет, верните индекс туда, где он был бы, если бы он был вставлен по порядку. Вы должны написать алгоритм со сложностью выполнения O(log n).",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const nums = [2, 7, 11, 13, 20, 90], target = 30",
+        "Вывод: 5"
+      ],
+      "Пример 2:": [
+        "Входные данные: const nums = [2, 7, 11, 13, 20, 90], target = 2",
+        "Вывод: 0"
+      ],
+      "Пример 3:": ["Входные данные: const nums = [], target = 5", "Вывод: 0"]
+    },
+    "defaultSolution": "const searchInsert = (nums, target) => {\n\n}\n\nconsole.log(searchInsert([2, 7, 11, 13, 20, 90], 30 ))",
+    "answer": "const searchInsert = (nums, target) => {\n  let start = 0;\n  let end = nums.length - 1;\n\n  while (start <= end) {\n    const middle = Math.floor((start + end) / 2);\n\n    if (nums[middle] === target) return middle;\n    if (nums[middle] < target) start = middle + 1;\n    if (nums[middle] > target) end = middle - 1;\n  }\n\n  return start;\n};"
+  }
+]

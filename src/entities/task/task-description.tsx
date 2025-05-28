@@ -1,12 +1,17 @@
+import { ExamplesType } from "../../shared/topics/types";
 import styles from "./styles.module.css";
 
 export type TaskDescriptionPropsType = {
   description?: string;
   task: string;
-  examples?: Record<string, string[]>;
+  examples?: ExamplesType;
 };
 
-export const TaskDescription = ({ description, examples, task }: TaskDescriptionPropsType) => {
+export const TaskDescription = ({
+  description,
+  examples,
+  task,
+}: TaskDescriptionPropsType) => {
   return (
     <div>
       <h5>{description}</h5>
@@ -20,7 +25,7 @@ export const TaskDescription = ({ description, examples, task }: TaskDescription
             <div key={titleExample} className={styles.example}>
               <code>
                 <p>{titleExample}</p>
-                {contentExample.map((exmpl) => (
+                {contentExample?.map((exmpl) => (
                   <p key={exmpl}>{exmpl}</p>
                 ))}
               </code>

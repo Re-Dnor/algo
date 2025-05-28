@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Some",
+    "description": "Метод some() проверяет, удовлетворяет ли какой-либо элемент массива условию, заданному в передаваемой функции.",
+    "task": "Реализовать метод some у массивов.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const nums = [1, 2, 3, 4, 5]",
+        "nums.some((i) => i % 2 === 0)",
+        "Вывод: true"
+      ]
+    },
+    "defaultSolution": "Array.prototype.some = function() {\n  //...\n}\n\nconst nums = [1, 2, 3, 4, 5];\nconsole.log(nums.some((x) => x % 2 === 0))",
+    "answer": "Array.prototype.some = function(cb, thisArg) {\n  if (this == null) {\n    throw new TypeError(\"Array.prototype.some called on null or undefined\");\n  }\n\n  if (typeof cb !== \"function\") {\n    throw new TypeError();\n  }\n\n  for (let i = 0; i < this.length; i++) {\n    if (cb.call(thisArg, this[i], i, this)) {\n      return true;\n    }\n  }\n\n  return false;\n}"
+  },
+  {
+    "name": "Map",
+    "description": "Метод map() создаёт новый массив с результатом вызова указанной функции для каждого элемента массива.",
+    "task": "Реализовать метод map у массивов.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const nums = [1, 2, 3, 4, 5]",
+        "nums.map((i) => i * 2)",
+        "Вывод: [2, 4, 6, 8, 10]"
+      ]
+    },
+    "defaultSolution": "Array.prototype.map = function() {\n  //...\n}\n\nconst nums = [1, 2, 3, 4, 5];\nconsole.log(nums.map((x) => x * 2))",
+    "answer": "Array.prototype.map = function(cb, thisArg) {\n  if (this == null) {\n    throw new TypeError(\"Array.prototype.map called on null or undefined\");\n  }\n\n  if (typeof cb !== \"function\") {\n    throw new TypeError();\n  }\n\n  let res = [];\n\n  for (let i = 0; i < this.length; i++) {\n    res.push(cb.call(thisArg, this[i], i, this));\n  }\n\n  return res;\n}"
+  },
+  {
+    "name": "Filter",
+    "description": "Метод filter() создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
+    "task": "Реализовать метод filter у массивов.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const nums = [1, 2, 3, 4, 5]",
+        "nums.filter((i) => i % 2 === 0)",
+        "Вывод: [2, 4]"
+      ]
+    },
+    "defaultSolution": "Array.prototype.filter = function() {\n  //...\n}\n\nconst nums = [1, 2, 3, 4, 5];\nconsole.log(nums.filter((x) => x % 2 === 0))",
+    "answer": "Array.prototype.filter = function (cb, thisArg) {\n  if (this == null) {\n    throw new TypeError(\"Array.prototype.filter called on null or undefined\");\n  }\n\n  if (typeof cb !== \"function\") {\n    throw new TypeError();\n  }\n\n  let res = [];\n\n  for (let i = 0; i < this.length; i++) {\n    if (cb.call(thisArg, this[i], i, this)) {\n      res.push(this[i]);\n    }\n  }\n\n  return res;\n};"
+  }
+]

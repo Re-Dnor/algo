@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Бинарный поиск",
+    "description": "Двоичный (бинарный) поиск (также известен как метод деления пополам или дихотомия) — классический алгоритм поиска элемента в отсортированном массиве (векторе), использующий дробление массива на половины.",
+    "task": "Реализовать бинарный поиск.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 10",
+        "Вывод: 9"
+      ],
+      "Пример 2:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 1",
+        "Вывод: 0"
+      ],
+      "Пример 3:": [
+        "Входные данные: nums = [1, 5, 10, 15, 20], target = 4",
+        "Вывод: 1"
+      ]
+    },
+    "defaultSolution": "const binarySearch = (nums, target) => {} \n\nconsole.log(binarySearch([1, 5, 10, 15, 20], 20))",
+    "answer": "const binarySearch = (nums, target) => {\n  let start = 0;\n  let end = nums.length - 1;\n\n  while (start <= end) {\n    const mid = Math.floor((start + end) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[mid] > target) end = mid - 1;\n    if (nums[mid] < target) start = mid + 1;\n  }\n  return start;\n}"
+  },
+  {
+    "name": "Интерполяционный поиск",
+    "description": "Интерполяционный поиск (интерполирующий поиск) основан на принципе поиска в телефонной книге или, например, в словаре. Вместо сравнения каждого элемента с искомым, как при линейном поиске, данный алгоритм производит предсказание местонахождения элемента: поиск происходит подобно двоичному поиску, но вместо деления области поиска на две части, интерполирующий поиск производит оценку новой области поиска по расстоянию между ключом и текущим значением элемента.",
+    "task": "Реализовать интерполяционный поиск.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 10",
+        "Вывод: 9"
+      ],
+      "Пример 2:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 1",
+        "Вывод: 0"
+      ],
+      "Пример 3:": [
+        "Входные данные: nums = [1, 5, 10, 15, 20], target = 4",
+        "Вывод: 1"
+      ]
+    },
+    "defaultSolution": "const interpolationSearch = (nums, target) => {}\n\nconsole.log(interpolationSearch([1, 5, 10, 15, 20], 20))",
+    "answer": "const interpolationSearch = (nums, target) => {\n  let left = 0;\n  let right = nums.length - 1;\n\n  while (left <= right) {\n    const rangeDelta = nums[right] - nums[left];\n    const indexDelta = right - left;\n    const valueDelta = target - nums[left];\n\n    if (valueDelta < 0) {\n    }\n    if (!rangeDelta) {\n      return nums[left] === target ? left : -1;\n    }\n    const middleIndex = left + Math.floor((valueDelta * indexDelta) / rangeDelta);\n\n    if (nums[middleIndex] === target) {\n      return middleIndex;\n    }\n    if (nums[middleIndex] < target) {\n      left = middleIndex + 1;\n    } else {\n      right = middleIndex - 1;\n    }\n  }\n\n  return -1;\n}"
+  },
+  {
+    "name": "Поиск прыжками",
+    "description": "Поиск прыжками говорит сам за себя. Поиск прыгает через определенное количество индексов и ищет первый элемент, который больше искомого значения, отпрыгивает назад и осуществляет линейный поиск с этого места. Поиск заканчивается, когда был или не был найден элемент. Условие поиска - предварительно сортированный массив по возрастанию.",
+    "task": "Реализовать поиск прыжками.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 10",
+        "Вывод: 9"
+      ],
+      "Пример 2:": [
+        "Входные данные: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 1",
+        "Вывод: 0"
+      ],
+      "Пример 3:": [
+        "Входные данные: nums = [1, 5, 10, 15, 20], target = 4",
+        "Вывод: 1"
+      ]
+    },
+    "defaultSolution": "const jumpSearch = (nums, target) => {}\n\nconsole.log(jumpSearch([1, 5, 10, 15, 20], 20))",
+
+    "answer": "const jumpSearch = (nums, target) => {\n  let len = nums.length;\n\n  let step = Math.floor(Math.sqrt(len));\n\n  let blockStart = 0,\n    currentStep = step;\n\n  while (nums[Math.min(currentStep, len) - 1] < target) {\n    blockStart = currentStep;\n    currentStep += step;\n    if (blockStart >= len) return -1;\n  }\n\n  while (nums[blockStart] < target) {\n    blockStart++;\n\n    if (blockStart == Math.min(currentStep, len)) return -1;\n  }\n\n  if (nums[blockStart] == target) return blockStart;\n  else return -1;\n}"
+  }
+]

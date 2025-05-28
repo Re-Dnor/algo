@@ -1,37 +1,45 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  leetcodeTopics,
-  searchTopics,
-  sortingTopics,
-  interviewTopics,
-  treeTopics,
-  prototypeTopics,
-} from "../../shared/topics";
 import { TopicsType } from "../../shared/topics/types";
-import { SendSolution } from "../../features";
 import { Solution, Task } from "../../entities";
 import styles from "./styles.module.css";
+import { searchTopics } from "../../shared/topics/search";
+import { interviewTopics } from "../../shared/topics/interview";
+import { leetcodeTopics } from "../../shared/topics/leetcode";
+import { prototypeTopics } from "../../shared/topics/prototype";
+import { sortingTopics } from "../../shared/topics/sorting";
+import { treeTopics } from "../../shared/topics/tree";
 
 export const Playground = () => {
-  const [textSolution, setTextSolution] = useState("");
   const { pathname } = useLocation();
+
+  const parts = pathname.split("/");
+  const [, route, index] = parts;
+  const indexJson = Number(index);
+
   const data: TopicsType = {
-    ...searchTopics,
-    ...sortingTopics,
-    ...treeTopics,
-    ...interviewTopics,
-    ...leetcodeTopics,
-    ...prototypeTopics,
+    search: searchTopics,
+    interview: interviewTopics,
+    leetcode: leetcodeTopics,
+    prototype: prototypeTopics,
+    sorting: sortingTopics,
+    tree: treeTopics,
   };
-  const { answer, description, name, task, examples, defaultSolution } = data[pathname];
+
+  const { answer, description, name, task, examples, defaultSolution } =
+    data[route][indexJson];
 
   return (
     <div className={styles.playground}>
-      <Task title={name} description={description} task={task} solution={answer} examples={examples} />
+      <Task
+        title={name}
+        description={description}
+        task={task}
+        solution={answer}
+        examples={examples}
+      />
       <div className={styles.solution}>
-        <Solution defaultValue={defaultSolution} setTextSolution={setTextSolution} />
-        <SendSolution textSolution={textSolution} />
+        <Solution defaultValue={defaultSolution} />
       </div>
     </div>
   );

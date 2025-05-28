@@ -1,4 +1,4 @@
-type ExamplesType = Record<string, string[]>;
+export type ExamplesType = Record<string, undefined | string[]>;
 
 export type Topic = {
   name: string;
@@ -9,4 +9,4 @@ export type Topic = {
   answer: string;
 };
 
-export type TopicsType = Record<string, Topic>;
+export type TopicsType = Record<string, Topic[]>;

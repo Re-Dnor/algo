@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Пузырьковая сортировка",
+    "description": "Сортировка пузырьком — один из самых известных алгоритмов сортировки. Здесь нужно последовательно сравнивать значения соседних элементов и менять числа местами, если предыдущее оказывается больше последующего. Таким образом элементы с большими значениями оказываются в конце списка, а с меньшими остаются в начале. Этот алгоритм считается учебным и почти не применяется на практике из-за низкой эффективности.",
+    "task": "Реализовать сортировку пузырьком.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const bubbleSort = (array) => {\n    \n}\n\nconsole.log(bubbleSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const bubbleSort = (array) => {\n  if (array.length <= 1) return array;\n\n  for (let i = 1; i < array.length; i++) {\n    for (let j = 0; j < array.length - 1; j++) {\n      if (array[j] > array[j + 1]) {\n        [array[j], array[j + 1]] = [array[j + 1], array[j]];\n      }\n    }\n  }\n  return array;\n};"
+  },
+  {
+    "name": "Сортировка вставками",
+    "description": "При сортировке вставками массив постепенно перебирается слева направо. При этом каждый последующий элемент размещается так, чтобы он оказался между ближайшими элементами с минимальным и максимальным значением.",
+    "task": "Реализовать сортировку вставками.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const insertionSort = (array) => {\n\n}\n\nconsole.log(insertionSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const insertionSort = (array) => {\n  for (let i = 1; i < array.length; i++) {\n    let currentValue = array[i];\n    let j = null;\n    for (j = i - 1; j >= 0 && array[j] > currentValue; j--) {\n      array[j + 1] = array[j];\n    }\n    array[j + 1] = currentValue;\n  }\n  return array;\n};"
+  },
+  {
+    "name": "Сортировка слиянием",
+    "description": "Сортировка слиянием пригодится для таких структур данных, в которых доступ к элементам осуществляется последовательно (например, для потоков). Здесь массив разбивается на две примерно равные части и каждая из них сортируется по отдельности. Затем два отсортированных подмассива сливаются в один.",
+    "task": "Реализовать сортировку слиянием.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const mergeSort = (array) => {\n\n}\n\nconsole.log(mergeSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const mergeSort = (array) => {\n  if (array.length <= 1) return array;\n\n  const mid = Math.floor(array.length / 2);\n  const left = mergeSort(array.slice(0, mid));\n  const right = mergeSort(array.slice(mid));\n\n  return merge(left, right);\n};\n\nfunction merge(left, right) {\n  const sorted = [];\n\n  while (left.length && right.length) {\n    if (left[0] <= right[0]) sorted.push(left.shift());\n    if (left[0] >= right[0]) sorted.push(right.shift());\n  }\n\n  return [...sorted, ...left, ...right];\n}"
+  },
+  {
+    "name": "Быстрая сортировка",
+    "description": "Этот алгоритм состоит из трёх шагов. Сначала из массива нужно выбрать один элемент — его обычно называют опорным. Затем другие элементы в массиве перераспределяют так, чтобы элементы меньше опорного оказались до него, а большие или равные — после. А дальше рекурсивно применяют первые два шага к подмассивам справа и слева от опорного значения.",
+    "task": "Реализовать быструю сортировку.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const quickSort = (array) => {\n\n}\n\nconsole.log(quickSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const quickSort = (array) => {\n  if (array.length <= 1) return array;\n\n  const pivot = array[0];\n  const start = [];\n  const end = [];\n\n  for (let i = 1; i < array.length; i++) {\n    if (pivot > array[i]) {\n      start.push(array[i]);\n    } else {\n      end.push(array[i]);\n    }\n  }\n\n  return [...quickSort(start), pivot, ...quickSort(end)];\n};"
+  },
+  {
+    "name": "Сортировка выбором",
+    "description": "Сначала нужно рассмотреть подмножество массива и найти в нём максимум (или минимум). Затем выбранное значение меняют местами со значением первого неотсортированного элемента. Этот шаг нужно повторять до тех пор, пока в массиве не закончатся неотсортированные подмассивы.",
+    "task": "Реализовать сортировку выбором.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const selectionSort = (array) => {\n\n}\n\nconsole.log(selectionSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const selectionSort = (array) => {\n  if (array.length <= 1) return array;\n\n  for (let i = 0; i < array.length; i++) {\n    let min = i;\n    for (let j = i + 1; j < array.length; j++) {\n      if (array[j] < array[min]) {\n        min = j;\n      }\n    }\n    if (min !== i) {\n      [array[i], array[min]] = [array[min], array[i]];\n    }\n  }\n\n  return array;\n};"
+  },
+  {
+    "name": "Сортировка Шелла",
+    "description": "Алгоритм сортировки, являющийся усовершенствованным вариантом сортировки вставками. Идея метода Шелла состоит в сравнении элементов, стоящих не только рядом, но и на определённом расстоянии друг от друга. Иными словами — это сортировка вставками с предварительными «грубыми» проходами.",
+    "task": "Реализовать сортировку Шелла.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
+        "Вывод: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      ],
+      "Пример 2:": [
+        "Входные данные: array = [5, 10, 25, 15, 1, 4, 3, 2]",
+        "Вывод: [1, 2, 3, 4, 5, 10, 15, 25]"
+      ]
+    },
+    "defaultSolution": "const shellSort = (array) => {\n\n}\n\nconsole.log(shellSort([5, 10, 25, 15, 1, 4, 3, 2]))",
+    "answer": "const shellSort = (array) => {\n  let length = array.length;\n\n  for (let gap = Math.floor(length / 2); gap > 0; gap = Math.floor(gap / 2)) {\n    for (let i = gap; i < length; i += 1) {\n      let temp = array[i];\n\n      let j;\n      for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {\n        array[j] = array[j - gap];\n      }\n\n      array[j] = temp;\n    }\n  }\n\n  return array;\n};"
+  }
+]

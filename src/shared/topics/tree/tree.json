@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Поиск в глубину",
+    "description": "Поиск в глубину (Depth-first search, DFS). В отличие от обхода в ширину, этот метод подойдет, если вы подозреваете, что нужный элемент находится внизу дерева и оно «узкое». Но если ваша цель — полностью обойти дерево, то этот способ по производительности ровно такой же, как и предыдущий.",
+    "task": "Реализовать обход в глубину",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const tree = { value: 1, children: [ { value: 2, children: [ { value: 5, children: [{ value: 6 }, { value: 7, children: [{ value: 8 }, { value: 9 }] }] } ] }, { value: 3, children: [{ value: 10 }] }, { value: 4 } ] }, target = 10",
+        "Вывод: [1, 2, 5, 6, 7, 8, 9, 3, 10, 4]"
+      ]
+    },
+    "defaultSolution": "const DFS = (tree) => {\n\n}\n\nconsole.log(DFS({\n  value: 1,\n  children: [\n    {\n      value: 2,\n      children: [\n        {\n          value: 5,\n          children: [{ value: 6 }, { value: 7, children: [{ value: 8 }, { value: 9 }] }],\n        },\n      ],\n    },\n    {\n      value: 3,\n      children: [{ value: 10 }],\n    },\n    {\n      value: 4,\n    },\n  ],\n}))",
+    "answer": "const DFS = (tree) => {\n  const res = [];\n\n  const recursive = (node) => {\n    if (node?.value) res.push(node.value);\n    if (node?.children) {\n      node.children.forEach((chl) => {\n        recursive(chl);\n      });\n    }\n  };\n\n  recursive(tree);\n  return res;\n}"
+  },
+  {
+    "name": "Поиск в ширину",
+    "description": "Поиск в ширину (Breadth-first search, BFS), суть этого обхода довольно проста: мы сначала просматриваем все элементы на одном уровне вложенности, а затем переходим на следующий и следующий, пока не обойдём всё. Этот алгоритм хорошо подходит для поиска, если вы знаете, что искомый элемент, скорее всего, лежит «сверху» и есть основания полагать, что дерево довольно широкое",
+    "task": "Реализовать обход в ширину.",
+    "examples": {
+      "Пример 1:": [
+        "Входные данные: const tree = { value: 1, children: [ { value: 2, children: [ { value: 5, children: [{ value: 6 }, { value: 7, children: [{ value: 8 }, { value: 9 }] }] } ] }, { value: 3, children: [{ value: 10 }] }, { value: 4 } ] }, target = 10",
+        "Вывод: [1, 2, 3, 4, 5, 10, 6, 7, 8, 9]"
+      ]
+    },
+    "defaultSolution": "const BFS = (tree) => {\n\n}\n\nconsole.log(DFS({\n  value: 1,\n  children: [\n    {\n      value: 2,\n      children: [\n        {\n          value: 5,\n          children: [{ value: 6 }, { value: 7, children: [{ value: 8 }, { value: 9 }] }],\n        },\n      ],\n    },\n    {\n      value: 3,\n      children: [{ value: 10 }],\n    },\n    {\n      value: 4,\n    },\n  ],\n}))",
+    "answer": "const BFS = (tree) => {\n      const res = [];\n      const queue = [];\n    \n      queue.push(tree);\n    \n      while (queue.length) {\n        const node = queue.shift();\n    \n        if (node?.value) res.push(node.value);\n        if (node?.children) {\n          node.children.forEach((chl) => {\n            queue.push(chl);\n          });\n        }\n      }\n    \n      return res;\n    }"
+  }
+]

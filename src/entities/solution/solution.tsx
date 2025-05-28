@@ -3,28 +3,22 @@ import { useRef } from "react";
 
 export type SolutionPropsType = {
   defaultValue: string;
-  setTextSolution: (value: string) => void;
 };
 
-export const Solution = ({ defaultValue, setTextSolution }: SolutionPropsType) => {
+export const Solution = ({ defaultValue }: SolutionPropsType) => {
   const editorRef = useRef(null);
 
   const handleEditorDidMount = (editor: any): void => {
     editorRef.current = editor;
   };
 
-  const handleEditorChange = (value: any) => {
-    setTextSolution(value);
-  };
-
   return (
     <Editor
-      height='90%'
-      defaultLanguage='javascript'
+      height="90%"
+      defaultLanguage="javascript"
       defaultValue={defaultValue}
       onMount={handleEditorDidMount}
-      onChange={handleEditorChange}
-      theme='vs-dark'
+      theme="vs-dark"
     />
   );
 };
