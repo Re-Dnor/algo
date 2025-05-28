@@ -8,11 +8,17 @@ export type SidebarPropsType = {
 };
 
 export const Sidebar = memo(({ handler }: SidebarPropsType) => {
+  console.log(navigationList);
   return (
     <div className={styles.sidebar}>
       <ul className={styles.list}>
         {navigationList.map((nav) => (
-          <SidebarItem key={nav.name} name={nav.name} link={nav.link} handler={handler} />
+          <SidebarItem
+            key={nav.name}
+            name={nav.name}
+            link={nav.link}
+            handler={handler}
+          />
         ))}
       </ul>
     </div>
