@@ -29,6 +29,8 @@ export const Playground = () => {
   const { answer, description, name, task, examples, defaultSolution } =
     data[route][indexJson];
 
+  console.log(123);
+
   return (
     <div className={styles.playground}>
       <Task
