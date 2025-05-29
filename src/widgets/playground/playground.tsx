@@ -37,6 +37,7 @@ export const Playground = () => {
         task={task}
         solution={answer}
         examples={examples}
+        defaultValue={defaultSolution}
       />
       <div className={styles.solution}>
         <Solution defaultValue={defaultSolution} />

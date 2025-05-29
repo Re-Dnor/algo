@@ -10,8 +10,7 @@ export const Header = () => {
 
   const handleChangeShowMenu = () => setShowMenu((prev) => !prev);
 
-  const handleSwitchPage = useCallback((link: string) => {
-    navigate(link);
+  const handleSwitchPage = useCallback(() => {
     setShowMenu(false);
   }, []);
 
@@ -23,8 +22,11 @@ export const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <button className={`${showMenu ? styles.menuActive : styles.menu}`} onClick={handleChangeShowMenu}>
-          <img src={menu} alt='Иконка меню' />
+        <button
+          className={`${showMenu ? styles.menuActive : styles.menu}`}
+          onClick={handleChangeShowMenu}
+        >
+          <img src={menu} alt="Иконка меню" />
         </button>
         <a className={styles.title} onClick={relocateToHome}>
           <span className={styles.js}>JS</span> Algo from small to large

@@ -43,3 +43,8 @@
   margin-bottom: 15px;
   border-radius: 15px;
 }
+
+.copy {
+  all: unset;
+  cursor: pointer;
+}

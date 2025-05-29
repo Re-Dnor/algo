@@ -1,20 +1,26 @@
 import { memo } from "react";
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
 
 export type SidebatItemPropsType = {
   name: string;
   link: string;
-  handler: (link: string) => void;
+  handler: () => void;
 };
 
-export const SidebarItem = memo(({ name, link, handler }: SidebatItemPropsType) => {
-  const handleSwitchPage = () => {
-    handler(link);
-  };
+export const SidebarItem = memo(
+  ({ name, link, handler }: SidebatItemPropsType) => {
+    const navigate = useNavigate();
 
-  return (
-    <li className={styles.item} onClick={handleSwitchPage}>
-      <p className={styles.link}>{name}</p>
-    </li>
-  );
-});
+    const handleSwitchPage = () => {
+      navigate(link);
+      handler();
+    };
+
+    return (
+      <li className={styles.item} onClick={handleSwitchPage}>
+        <p className={styles.link}>{name}</p>
+      </li>
+    );
+  }
+);
